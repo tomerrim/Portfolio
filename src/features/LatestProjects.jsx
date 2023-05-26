@@ -7,7 +7,7 @@ import { ProjectsAPI } from "@/api/projects";
 //import { BadgeList } from "@/components/badgeList/BadgeList";
 
 export const LatestProjects = () => {
-    const { t } = useTranslation(["home"]);
+    const { t, i18n } = useTranslation(["home"]);
     const [projects, setProjects] = useState();
 
     const fetchAll = async () => {
@@ -19,7 +19,7 @@ export const LatestProjects = () => {
       fetchAll();
     },[])
 
-    const renderProject = ({ id, images, title, description, technologies }) => {
+    const renderProject = ({ id, images, title, desc, technologies }) => {
     return (
       <WrapItem key={id} flexDir={"column"}>
         <ImageSlider imageList={images.map(img => img.downloadURL)} />
@@ -34,7 +34,7 @@ export const LatestProjects = () => {
           />
           {title}
         </Heading>
-        <Text maxW={350}>{description}</Text>
+        <Text maxW={350}>{desc[i18n.language]}</Text>
         {/* <BadgeList list={technologies} mt={2} maxW={350}/> */}
         <Wrap mt={"4"} maxW={350}>
           {technologies.map((tech) => (
