@@ -18,7 +18,7 @@ export const Header = () => {
       <HStack>
         <Image src={bubbleImg} h={10} />
         <Link
-          href="mailto:tomerrim@gmail.com?subject-Cantacting you from your portfolio"
+          href="mailto:tomerrim@gmail.com?subject-Contacting you from your portfolio"
           fontSize={"lg"}
           fontWeight={"bold"}
         >
