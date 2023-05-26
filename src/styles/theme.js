@@ -20,11 +20,10 @@ const colors = {
   MSSQL: "#b30000",
   MongoDB: "#00b300",
   Git: "#ff751a",
-  ES6: "#009999",
   Bootstrap: "#9038f4",
-  FireBase: "#feba54",
+  "ASP.NET CORE MVC": "#feba54",
+  "ASP.NET CORE WEB API": "#31b03e",
   Vercel: "#00cc99",
-  ChakraUI: "#31b03e",
 };
 
 const fonts = {
