@@ -8,7 +8,6 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { useState } from "react";
-//import "./ImageSlider.css";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 export const ImageSlider = ({ imageList }) => {
