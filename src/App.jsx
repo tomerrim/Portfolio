@@ -8,7 +8,7 @@ export const App = () => {
 
     return (
         <>
-        <Box p={20}>
+        <Box p={5}>
             <Header/>
             <Landing/>
             <LatestProjects/>
