@@ -27,6 +27,8 @@ export const ImageSlider = ({ imageList }) => {
           src={imageLink}
           boxShadow={"xl"}
           borderRadius={"xl"}
+          border={"1px"}
+          borderColor={"gray"}
           key={imageLink}
         />
       );
