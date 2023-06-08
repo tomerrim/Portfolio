@@ -60,7 +60,7 @@ export const ImageSlider = ({ imageList }) => {
 
   return (
     <>
-      <Box w={350}>{slider}</Box>
+      <Box w={325}>{slider}</Box>
       {modalSlider}
     </>
   );
