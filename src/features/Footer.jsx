@@ -3,7 +3,7 @@ import { BsLinkedin, BsInstagram, BsGithub } from "react-icons/bs";
 export const Footer = () => {
     return (
       <HStack justify={"center"} h={130} bg={"secondary"}>
-        <Link href="https://www.instagram.com/" isExternal>
+        <Link href="https://instagram.com/tomer_rimler" isExternal>
           <Icon as={BsInstagram} w={8} h={8} color={"white"} />
         </Link>
         <Link href="https://www.linkedin.com/in/tomer-rimler/" isExternal>
