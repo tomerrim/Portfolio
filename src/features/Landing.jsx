@@ -71,6 +71,7 @@ export const Landing = () => {
       direction={{ base: "column", md: "row" }}
       justify={"space-evenly"}
       mt={{ base: 50, md: 150 }}
+      id="landing"
     >
       {leftSection}
       {rightSection}

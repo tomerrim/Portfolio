@@ -48,7 +48,7 @@ export const LatestProjects = () => {
   };
 
   return (
-    <Flex direction={"column"} w={"100%"}>
+    <Flex direction={"column"} w={"100%"} mt={4} id="projects">
       <Heading>{t("latestProjects")}</Heading>
       <Wrap mt={10} spacing={16}>
         {projects?.map(renderProject)}

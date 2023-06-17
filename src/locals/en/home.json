@@ -4,6 +4,10 @@
     "job": "a Full Stack Developer",
     "location": "located in Israel",
     "hireMe": "Hire me",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact Me",
+    "contactDesc": "Get in touch with me via social media or email",
     "yearsExp": "years of experience",
     "latestProjects": "Latest Projects"
 }
