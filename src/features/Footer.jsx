@@ -13,7 +13,7 @@ export const Footer = () => {
         id="contact"
         spacing={4}
       >
-        <Heading as={"h3"} size={isMobile ? "md" : "lg"} color={"white"} p={4} pb={1}>
+        <Heading as={"h3"} size={isMobile ? "md" : "lg"} color={"white"} textAlign={"center"} p={4} pb={1}>
           {t("contactDesc")}
         </Heading>
         <HStack justify={"center"}>
