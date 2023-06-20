@@ -1,6 +1,7 @@
 import { Link, MenuItem, Flex, Spacer } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { BsInfoCircle, BsBriefcase, BsEnvelope } from "react-icons/bs";
+import "./features.css";
 
 export const Links = ({isMobile}) => {
     const { t } = useTranslation("home");
@@ -38,18 +39,24 @@ export const Links = ({isMobile}) => {
           </Flex>
         </MenuItem>
       ) : (
+        <>
         <Link
           onClick={() => handleScrollTo(link.id)}
           key={link.id}
           fontSize={"lg"}
           fontWeight={"bold"} 
-        >
+          _hover={{ textDecoration: "none"}}
+          >
           <Flex>
             {link.icon}
             <Spacer px={1} />
-            {link.label}
+            <div className="hoverLine">
+              {link.label}
+            </div>
           </Flex>
         </Link>
+        <Spacer px={1}/>
+        </>
       )
     );
 }
