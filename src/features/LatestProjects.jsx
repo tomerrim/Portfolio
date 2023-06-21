@@ -37,7 +37,11 @@ export const LatestProjects = () => {
         <Text maxW={350}>{desc[i18n.language]}</Text>
         {/* <BadgeList list={technologies} mt={2} maxW={350}/> */}
         <Wrap mt={"4"} maxW={350}>
-          {technologies.map((tech) => (
+          {technologies.sort((a,b) => {
+            if(a === ".NET") return -1;
+            if(b === ".NET") return 1;
+            return b.localeCompare(a)
+          }).map((tech) => (
             <WrapItem key={tech}>
               <Badge bg={tech}>{tech}</Badge>
             </WrapItem>
@@ -50,7 +54,7 @@ export const LatestProjects = () => {
   return (
     <Flex direction={"column"} w={"100%"} mt={4} id="projects">
       <Heading>{t("latestProjects")}</Heading>
-      <Wrap mt={10} spacing={16}>
+      <Wrap mt={10} spacing={16} justify={"center"}>
         {projects?.map(renderProject)}
       </Wrap>
     </Flex>

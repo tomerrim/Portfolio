@@ -10,7 +10,7 @@ export const App = () => {
 
     return (
       <>
-        <Box p={5} dir={i18n.language === "en" ? 'ltr' : 'rtl'}>
+        <Box px={["4", "4", "6", "6"]} pb={8} pt={8} dir={i18n.language === "en" ? 'ltr' : 'rtl'}>
           <Header />
           <Landing />
           <LatestProjects />
