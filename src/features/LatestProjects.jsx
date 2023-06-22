@@ -36,7 +36,7 @@ export const LatestProjects = () => {
         </Heading>
         <Text maxW={350}>{desc[i18n.language]}</Text>
         {/* <BadgeList list={technologies} mt={2} maxW={350}/> */}
-        <Wrap mt={"4"} maxW={350}>
+        <Wrap mt={"4"} maxW={350} pb={2}>
           {technologies.sort((a,b) => {
             if(a === ".NET") return -1;
             if(b === ".NET") return 1;

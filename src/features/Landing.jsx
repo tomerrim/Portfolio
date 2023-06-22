@@ -42,7 +42,7 @@ export const Landing = () => {
       </Text>
       {/* move it later to BadgeList component */}
       {/* <BadgeList list={SKILLS} mt={"14"}/> */}
-      <Wrap mt={"14"}>
+      <Wrap mt={"14"} p={2} >
         {SKILLS.map((skill) => (
             <WrapItem key={skill.label}>
                 <Badge bg={skill.label}>{skill.label}</Badge>
@@ -53,7 +53,7 @@ export const Landing = () => {
   );
 
   const badgeExperience = (
-    <Badge bg={"primary.light"} borderRadius={7} p={3} textAlign={"center"}>
+    <Badge bg={"primary.light"} shadow={false} borderRadius={7} p={3} textAlign={"center"}>
       <Text fontSize={"xl"}>{new Date().getFullYear() - 2022}</Text>
       <Text>{t("yearsExp")}</Text>
     </Badge>
