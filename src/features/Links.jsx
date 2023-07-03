@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link, MenuItem, Flex, Spacer } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { BsInfoCircle, BsBriefcase, BsEnvelope } from "react-icons/bs";
@@ -31,7 +32,11 @@ export const Links = ({isMobile}) => {
 
     return links.map((link) =>
       isMobile ? (
-        <MenuItem onClick={() => handleScrollTo(link.id)} key={link.id}>
+        <MenuItem
+          onClick={() => handleScrollTo(link.id)}
+          key={link.id}
+          border={"transparent"}
+        >
           <Flex>
             {link.icon}
             <Spacer px={2} />
@@ -39,24 +44,22 @@ export const Links = ({isMobile}) => {
           </Flex>
         </MenuItem>
       ) : (
-        <>
-        <Link
-          onClick={() => handleScrollTo(link.id)}
-          key={link.id}
-          fontSize={"lg"}
-          fontWeight={"bold"} 
-          _hover={{ textDecoration: "none"}}
+        <Fragment key={link.id}>
+          <Link
+            color={"white"}
+            onClick={() => handleScrollTo(link.id)}
+            fontSize={"lg"}
+            fontWeight={"bold"}
+            _hover={{ textDecoration: "none" }}
           >
-          <Flex>
-            {link.icon}
-            <Spacer px={1} />
-            <div className="hoverLine">
-              {link.label}
-            </div>
-          </Flex>
-        </Link>
-        <Spacer px={1}/>
-        </>
+            <Flex>
+              {link.icon}
+              <Spacer px={1} />
+              <div className="hoverLine">{link.label}</div>
+            </Flex>
+          </Link>
+          <Spacer px={1} />
+        </Fragment>
       )
     );
 }

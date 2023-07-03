@@ -17,44 +17,30 @@ export const Header = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <Flex justify={"space-between"}>
-      <Image src={logo} h={10} />
+    <Flex
+      justify={"space-between"}
+      position="sticky"
+      top={0}
+      zIndex={11}
+      bg={"gray.800"}
+      p={{ base: 2 }}
+      id="header"
+    >
+      <Image src={logo} h={10} borderRadius={'50%'}/>
       <HStack>
-        {/* <Image src={bubbleImg} h={10} /> */}
-        {/* <Link
-          href="#landing"
-          fontSize={"lg"}
-          fontWeight={"bold"}
-          mr={"4"}>
-            About Me
-        </Link>
-        <Link
-          href="#projects"
-          fontSize={"lg"}
-          fontWeight={"bold"}
-          mr={"4"}>
-            Projects
-        </Link>
-        <Link
-          href="mailto:tomerrim@gmail.com?subject-Contacting you from your portfolio"
-          fontSize={"lg"}
-          fontWeight={"bold"}
-        >
-          {t("hireMe")}
-        </Link> */}
         {isMobile ? (
           <Menu>
             <MenuButton
               as={IconButton}
               aria-label="Options"
-              icon={<HamburgerIcon />}
+              icon={<HamburgerIcon color={"white"}/>}
               size={"lg"}
               variant={"outline"}
             />
             <MenuList>{<Links isMobile={isMobile} />}</MenuList>
           </Menu>
         ) : (
-          <Links isMobile={isMobile} />
+          <Links isMobile={isMobile}/>
         )}
         <Image
           onClick={switchLanguage}

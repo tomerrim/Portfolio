@@ -2,6 +2,8 @@ import { Box, Flex, Heading, Image, Text, Wrap, WrapItem } from "@chakra-ui/reac
 import humanImg from "@/assets/images/human.png";
 import { useTranslation } from "react-i18next";
 import { Badge } from "@/components/badge/Badge";
+import { useBreakpointValue } from "@chakra-ui/react";
+import "./features.css"
 //import { BadgeList } from "@/components/badgeList/BadgeList";
 
 const SKILLS = [
@@ -21,46 +23,41 @@ const SKILLS = [
 
 export const Landing = () => {
   const { t } = useTranslation(["home"]);
+  const leftSectionWidth = useBreakpointValue({ base: "100%", md: "80%" });
+  const justifyContentSkills = useBreakpointValue({ base: "center", md: "flex-start" });
+
   const leftSection = (
-    <Box>
-      <Heading
-        fontSize={{ base: "2xl", md: "5xl", xl: "7xl" }}
-        color={"secondary"}
-        whiteSpace={"pre-line"}
-      >
-        {t("greetings")}
-        <Text as={"span"} color={"primary.dark"}>
-          .
-        </Text>
+    <Box zIndex={2} width={leftSectionWidth}>
+      <Heading color={"white"} pb={5}>
+        {t("aboutMe")}
       </Heading>
-      <Text fontSize={"lg"} color={"secondary"}>
-        {t("iAm")}
-        <Text as={"span"} fontWeight={"bold"}>
-          {t("job")}
-        </Text>
-        <br /> {t("location")}
+      <Text fontSize={"lg"} color={"white"} pb={8} maxW={"1100px"}>
+        {t("aboutMeText")}
       </Text>
       {/* move it later to BadgeList component */}
       {/* <BadgeList list={SKILLS} mt={"14"}/> */}
-      <Wrap mt={"14"} p={2} >
+      <Heading zIndex={2} color={"white"}>
+        {t("skills")}
+      </Heading>
+      <Wrap mt={"8"} justify={justifyContentSkills} maxW={"900px"}>
         {SKILLS.map((skill) => (
-            <WrapItem key={skill.label}>
-                <Badge bg={skill.label}>{skill.label}</Badge>
-            </WrapItem>
+          <WrapItem key={skill.label}>
+            <Badge bg={"gray.700"}>{skill.label}</Badge>
+          </WrapItem>
         ))}
       </Wrap>
     </Box>
   );
 
   const badgeExperience = (
-    <Badge bg={"primary.light"} shadow={false} borderRadius={7} p={3} textAlign={"center"}>
+    <Badge className="animateFloat" bg={"primary.light"} shadow={false} borderRadius={7} p={3} textAlign={"center"}>
       <Text fontSize={"xl"}>{new Date().getFullYear() - 2022}</Text>
       <Text>{t("yearsExp")}</Text>
     </Badge>
   );
 
   const rightSection = (
-    <Box mt={{ base: 10, md: 0 }}>
+    <Box mt={{ base: 10, md: 0 }} zIndex={2}>
       <Flex justify={"flex-end"}>{badgeExperience}</Flex>
       <Image src={humanImg} w={400} />
     </Box>
@@ -71,6 +68,7 @@ export const Landing = () => {
       direction={{ base: "column", md: "row" }}
       justify={"space-evenly"}
       mt={{ base: 50, md: 150 }}
+      px={["4", "4", "6", "6"]}
       id="landing"
     >
       {leftSection}

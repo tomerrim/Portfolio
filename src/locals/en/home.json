@@ -1,13 +1,16 @@
 {
-    "greetings": "Hi, my name \n is Tomer",
+    "greetings": "Hi, my name is ",
+    "name": "Tomer Rimler",
     "iAm": "I am ",
     "job": "a Full Stack Developer",
-    "location": "located in Israel",
-    "hireMe": "Hire me",
+    "location": "from Israel",
+    "aboutMe": "About Me",
     "about": "About",
     "projects": "Projects",
     "contact": "Contact Me",
     "contactDesc": "Get in touch with me via social media or email",
     "yearsExp": "years of experience",
-    "latestProjects": "Latest Projects"
+    "latestProjects": "Latest Projects",
+    "skills": "Skills",
+    "aboutMeText": "I'm a passionate Full Stack Developer skilled in both front-end and back-end technologies. I deliver efficient, user-friendly solutions, I'm always eager to embrace the latest industry advancements. I excel at working collaboratively, consistently achieving successful project outcomes and ready for new challenges."
 }

@@ -9,14 +9,16 @@ export const Footer = () => {
       <VStack
         justify={"center"}
         h={170}
-        bg={"secondary"}
+        bg={"gray.800"}
         id="contact"
         spacing={4}
+        zIndex={2}
+        position={"relative"}
       >
-        <Heading as={"h3"} size={isMobile ? "md" : "lg"} color={"white"} textAlign={"center"} p={4} pb={1}>
+        <Heading as={"h3"} size={isMobile ? "md" : "lg"} color={"white"} textAlign={"center"} p={4} pb={1} zIndex={2}>
           {t("contactDesc")}
         </Heading>
-        <HStack justify={"center"}>
+        <HStack justify={"center"} zIndex={2}>
           <Link href="https://instagram.com/tomer_rimler" isExternal>
             <Icon as={BsInstagram} w={8} h={8} color={"white"} />
           </Link>

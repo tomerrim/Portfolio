@@ -22,11 +22,11 @@ export const LatestProjects = () => {
     const renderProject = ({ id, images, title, desc, technologies }) => {
     return (
       <WrapItem key={id} flexDir={"column"}>
-        <ImageSlider imageList={images.map(img => img.downloadURL)} />
-        <Heading size={"md"} color={"secondary"} mt={3}>
+        <ImageSlider imageList={images.map((img) => img.downloadURL)} />
+        <Heading size={"md"} color={"white"} mt={3} zIndex={2}>
           <Box
             display={"inline-block"}
-            bg={"primary.dark"}
+            bg={"primary.light"}
             w={25}
             h={1}
             mr={3}
@@ -34,18 +34,22 @@ export const LatestProjects = () => {
           />
           {title}
         </Heading>
-        <Text maxW={350}>{desc[i18n.language]}</Text>
+        <Text maxW={350} zIndex={2} color={"white"}>
+          {desc[i18n.language]}
+        </Text>
         {/* <BadgeList list={technologies} mt={2} maxW={350}/> */}
-        <Wrap mt={"4"} maxW={350} pb={2}>
-          {technologies.sort((a,b) => {
-            if(a === ".NET") return -1;
-            if(b === ".NET") return 1;
-            return b.localeCompare(a)
-          }).map((tech) => (
-            <WrapItem key={tech}>
-              <Badge bg={tech}>{tech}</Badge>
-            </WrapItem>
-          ))}
+        <Wrap mt={"4"} maxW={350} pb={10} zIndex={2}>
+          {technologies
+            .sort((a, b) => {
+              if (a === ".NET") return -1;
+              if (b === ".NET") return 1;
+              return b.localeCompare(a);
+            })
+            .map((tech) => (
+              <WrapItem key={tech}>
+                <Badge bg={"gray.700"}>{tech}</Badge>
+              </WrapItem>
+            ))}
         </Wrap>
       </WrapItem>
     );
@@ -53,7 +57,7 @@ export const LatestProjects = () => {
 
   return (
     <Flex direction={"column"} w={"100%"} mt={4} id="projects">
-      <Heading>{t("latestProjects")}</Heading>
+      <Heading zIndex={2} color={"white"} p={2} pl={8}>{t("latestProjects")}</Heading>
       <Wrap mt={10} spacing={16} justify={"center"}>
         {projects?.map(renderProject)}
       </Wrap>
