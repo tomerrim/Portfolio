@@ -114,17 +114,18 @@ export const Home = () => {
           style={{ position:"relative", zIndex: 2}}
         >
           <Heading
-            fontSize={{ base: "5xl", md: "6xl", xl: "8xl" }}
+            fontSize={{ base: "4xl", md: "6xl", xl: "8xl" }}
             color={"white"}
             whiteSpace={"pre-line"}
             p={5}
+            textAlign={"center"}
           >
             {t("greetings")}
             <Text as={"span"} color={"primary.light"}>
               {t("name")}
             </Text>
           </Heading>
-          <Text fontSize={{ base: "2xl", md: "4xl", xl: "6xl" }} color={"white"}>
+          <Text fontSize={{ base: "2xl", md: "4xl", xl: "6xl" }} color={"white"} textAlign={"center"}>
             {t("iAm")}
             <Text as={"span"} fontWeight={"bold"}>
               {t("job")}
