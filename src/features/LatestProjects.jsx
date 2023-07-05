@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/badge/Badge";
 import { ProjectsAPI } from "@/api/projects";
-//import { BadgeList } from "@/components/badgeList/BadgeList";
 
 export const LatestProjects = () => {
     const { t, i18n } = useTranslation(["home"]);

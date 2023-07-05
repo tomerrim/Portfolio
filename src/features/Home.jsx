@@ -135,7 +135,7 @@ export const Home = () => {
             position={"absolute"}
             zIndex={2}
             color={"white"}
-            bottom={10}
+            bottom={20}
             onClick={() => handleScrollTo("header")}><ArrowDownIcon fontSize={45}/></Link>
         </VStack>
       </Box>

@@ -4,7 +4,9 @@ import { useTranslation } from "react-i18next";
 import { Badge } from "@/components/badge/Badge";
 import { useBreakpointValue } from "@chakra-ui/react";
 import "./features.css"
-//import { BadgeList } from "@/components/badgeList/BadgeList";
+import { useSpring, animated } from "react-spring";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 const SKILLS = [
   { label: "React" },
@@ -24,28 +26,65 @@ const SKILLS = [
 export const Landing = () => {
   const { t } = useTranslation(["home"]);
   const leftSectionWidth = useBreakpointValue({ base: "100%", md: "80%" });
-  const justifyContentSkills = useBreakpointValue({ base: "center", md: "flex-start" });
+  const justifyContentSkills = useBreakpointValue({ base: "center", md: "flex-start" });   
+
+  const [refRight, inViewRight] = useInView({ triggerOnce: true });
+  const [aboutTitleRef, inViewAboutTitle] = useInView({ triggerOnce: true });
+  const [aboutTextRef, inViewAboutText] = useInView({ triggerOnce: true });
+  const [skillsTitleRef, inViewSkillsTitle] = useInView({ triggerOnce: true });
+  const [skillsRef, inViewskills] = useInView({ triggerOnce: true });
+
+  const [appearsFromRight, setAppearsFromRight] = useSpring(() => ({ opacity: 0, transform: "translateX(200px)" }));
+  const [aboutTitleFromLeft, setAboutTitleFromLeft] = useSpring(() => ({ opacity: 0, transform: "translateX(-200px)" }));
+  const [aboutTextFromLeft, setAboutTextFromLeft] = useSpring(() => ({ opacity: 0, transform: "translateX(-200px)" }));
+  const [skillsTitleFromLeft, setSkillsTitleFromLeft] = useSpring(() => ({ opacity: 0, transform: "translateX(-200px)" }));
+  const [skillsFromLeft, setSkillsFromLeft] = useSpring(() => ({ opacity: 0, transform: "translateX(-200px)" }));
+
+  useEffect(() => {
+    if (inViewRight) {
+      setAppearsFromRight({ opacity: 1, transform: "translateX(0)", delay: 1250 });
+    }
+    if (inViewAboutTitle) {
+      setAboutTitleFromLeft({ opacity: 1, transform: "translateX(0)", delay: 500});
+    }
+    if (inViewAboutText) {
+      setAboutTextFromLeft({ opacity: 1, transform: "translateX(0)", delay: 750});
+    }
+    if (inViewSkillsTitle) {
+      setSkillsTitleFromLeft({ opacity: 1, transform: "translateX(0)", delay: 1000});
+    }
+    if (inViewskills) {
+      setSkillsFromLeft({ opacity: 1, transform: "translateX(0)", delay: 1250 });
+    }
+  }, [inViewRight, inViewAboutTitle, inViewAboutText, inViewSkillsTitle, inViewskills,
+     setAppearsFromRight, setAboutTitleFromLeft, setAboutTextFromLeft, setSkillsTitleFromLeft, setSkillsFromLeft]);
 
   const leftSection = (
     <Box zIndex={2} width={leftSectionWidth}>
-      <Heading color={"white"} pb={5}>
-        {t("aboutMe")}
-      </Heading>
-      <Text fontSize={"lg"} color={"white"} pb={8} maxW={"1100px"}>
-        {t("aboutMeText")}
-      </Text>
-      {/* move it later to BadgeList component */}
-      {/* <BadgeList list={SKILLS} mt={"14"}/> */}
-      <Heading zIndex={2} color={"white"}>
-        {t("skills")}
-      </Heading>
-      <Wrap mt={"8"} justify={justifyContentSkills} maxW={"900px"}>
-        {SKILLS.map((skill) => (
-          <WrapItem key={skill.label}>
-            <Badge bg={"gray.700"}>{skill.label}</Badge>
-          </WrapItem>
-        ))}
-      </Wrap>
+      <animated.div style={aboutTitleFromLeft} ref={aboutTitleRef}>  
+        <Heading color={"white"} pb={5}>
+          {t("aboutMe")}
+        </Heading>
+      </animated.div>
+      <animated.div style={aboutTextFromLeft} ref={aboutTextRef}>
+        <Text fontSize={"lg"} color={"white"} pb={8} maxW={"1100px"}>
+          {t("aboutMeText")}
+        </Text>
+      </animated.div>
+      <animated.div style={skillsTitleFromLeft} ref={skillsTitleRef}>
+        <Heading zIndex={2} color={"white"}>
+          {t("skills")}
+        </Heading>
+      </animated.div>
+      <animated.div style={skillsFromLeft} ref={skillsRef}>
+        <Wrap mt={"8"} justify={justifyContentSkills} maxW={"900px"}>
+          {SKILLS.map((skill) => (
+            <WrapItem key={skill.label}>
+              <Badge bg={"gray.700"}>{skill.label}</Badge>
+            </WrapItem>
+          ))}
+        </Wrap>
+      </animated.div>
     </Box>
   );
 
@@ -72,7 +111,7 @@ export const Landing = () => {
       id="landing"
     >
       {leftSection}
-      {rightSection}
+      <animated.div style={appearsFromRight} ref={refRight}>{rightSection}</animated.div>
     </Flex>
   );
 };
