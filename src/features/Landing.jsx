@@ -108,6 +108,7 @@ export const Landing = () => {
       justify={"space-evenly"}
       mt={{ base: 50, md: 150 }}
       px={["4", "4", "6", "6"]}
+      overflowX={"hidden"}
       id="landing"
     >
       {leftSection}
