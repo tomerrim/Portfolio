@@ -23,6 +23,26 @@ const SKILLS = [
   { label: "CSS" },
 ];
 
+const setOffScreen = (side="left", px=200) => {
+  let from = -1;  //from left
+  const fromSide = side.toLowerCase();
+  if (fromSide === "right") {
+    from = 1
+  }
+  return {
+    opacity: 0,
+    transform: `translateX(${from * px}px)`
+  }
+}
+
+const appearsOnScreen = (delay) => {
+  return {
+    opacity: 1,
+    transform: "translateX(0)",
+    delay: delay,
+  };
+}
+
 export const Landing = () => {
   const { t } = useTranslation(["home"]);
   const leftSectionWidth = useBreakpointValue({ base: "100%", md: "80%" });
@@ -34,27 +54,27 @@ export const Landing = () => {
   const [skillsTitleRef, inViewSkillsTitle] = useInView({ triggerOnce: true });
   const [skillsRef, inViewskills] = useInView({ triggerOnce: true });
 
-  const [appearsFromRight, setAppearsFromRight] = useSpring(() => ({ opacity: 0, transform: "translateX(200px)" }));
-  const [aboutTitleFromLeft, setAboutTitleFromLeft] = useSpring(() => ({ opacity: 0, transform: "translateX(-200px)" }));
-  const [aboutTextFromLeft, setAboutTextFromLeft] = useSpring(() => ({ opacity: 0, transform: "translateX(-200px)" }));
-  const [skillsTitleFromLeft, setSkillsTitleFromLeft] = useSpring(() => ({ opacity: 0, transform: "translateX(-200px)" }));
-  const [skillsFromLeft, setSkillsFromLeft] = useSpring(() => ({ opacity: 0, transform: "translateX(-200px)" }));
+  const [appearsFromRight, setAppearsFromRight] = useSpring(() => (setOffScreen("right")));
+  const [aboutTitleFromLeft, setAboutTitleFromLeft] = useSpring(() => (setOffScreen()));
+  const [aboutTextFromLeft, setAboutTextFromLeft] = useSpring(() => (setOffScreen()));
+  const [skillsTitleFromLeft, setSkillsTitleFromLeft] = useSpring(() => (setOffScreen()));
+  const [skillsFromLeft, setSkillsFromLeft] = useSpring(() => (setOffScreen()));
 
   useEffect(() => {
     if (inViewRight) {
-      setAppearsFromRight({ opacity: 1, transform: "translateX(0)", delay: 1250 });
+      setAppearsFromRight(appearsOnScreen(1250));
     }
     if (inViewAboutTitle) {
-      setAboutTitleFromLeft({ opacity: 1, transform: "translateX(0)", delay: 500});
+      setAboutTitleFromLeft(appearsOnScreen(500));
     }
     if (inViewAboutText) {
-      setAboutTextFromLeft({ opacity: 1, transform: "translateX(0)", delay: 750});
+      setAboutTextFromLeft(appearsOnScreen(750));
     }
     if (inViewSkillsTitle) {
-      setSkillsTitleFromLeft({ opacity: 1, transform: "translateX(0)", delay: 1000});
+      setSkillsTitleFromLeft(appearsOnScreen(1000));
     }
     if (inViewskills) {
-      setSkillsFromLeft({ opacity: 1, transform: "translateX(0)", delay: 1250 });
+      setSkillsFromLeft(appearsOnScreen(1250));
     }
   }, [inViewRight, inViewAboutTitle, inViewAboutText, inViewSkillsTitle, inViewskills,
      setAppearsFromRight, setAboutTitleFromLeft, setAboutTextFromLeft, setSkillsTitleFromLeft, setSkillsFromLeft]);
@@ -108,6 +128,7 @@ export const Landing = () => {
       justify={"space-evenly"}
       mt={{ base: 50, md: 150 }}
       px={["4", "4", "6", "6"]}
+      pt={5}
       overflowX={"hidden"}
       id="landing"
     >
